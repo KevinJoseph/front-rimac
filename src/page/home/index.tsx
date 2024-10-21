@@ -4,12 +4,12 @@ import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Inputform } from "../../components/custom/inputForm";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useSubmitForm } from "../../hooks/useSubmit"; 
-import { SelectForm } from "../../components/custom/selectForm";
+import { useSubmitForm } from "../../hooks/useSubmit";
+import { FaCheckSquare } from "react-icons/fa";
 
 type FormData = {
-  phone: string;       // Cambia de celular a phone
-  document: string;    // Cambia de dni a document
+  phone: string; 
+  document: string; 
 };
 
 export const Home = () => {
@@ -25,7 +25,7 @@ export const Home = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log("data: ", data);
-    const success = await submitForm(data); 
+    const success = await submitForm(data);
     if (success) {
       reset();
     }
@@ -44,30 +44,62 @@ export const Home = () => {
             </p>
 
             {/* Formulario */}
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Inputform
-                title="Celular"
-                error={errors.phone?.message}  // Cambia celular a phone
-                {...register("phone", {        // Cambia celular a phone
-                  required: "El número de celular es obligatorio",
-                  pattern: {
-                    value: /^[0-9]{9}$/, 
-                    message: "El número de celular no es válido"
-                  }
-                })}
-              />
+            <form onSubmit={handleSubmit(onSubmit)} style={{ display: "grid", width: "100%", gap: "10px" }}>
+              <div className="inputSelect">
+                <div className="inputSelect--select ">
+                  <select id="documentType" name="documentType">
+                    <option value="DNI">DNI</option>
+                    <option value="RUC">RUC</option>
+                  </select>
 
-              <SelectForm
-                title="Nro. de Documento"
-                error={errors.document?.message} // Cambia dni a document
-                {...register("document", {          // Cambia dni a document
-                  required: "El DNI es obligatorio",
-                  pattern: {
-                    value: /^[0-9]{8}$/, 
-                    message: "El DNI no es válido"
-                  }
-                })}
-              />
+                </div>
+                <div className="input-div">
+                  <label
+                    htmlFor="UserEmail"
+                    className="input-container"
+                  >
+                    <input
+                      type="email"
+                      id="UserEmail"
+                      placeholder=""
+                      className="input-field"
+                    />
+
+                    <span className="input-label">
+                      Email
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="userPhone"
+                  className="input-container2"
+                >
+                  <input
+                    type="number"
+                    id="userPhone"
+                    placeholder=""
+                    className="input-field"
+                    {...register("phone", {       
+                      required: "El número de celular es obligatorio",
+                      pattern: {
+                        value: /^[0-9]{9}$/,
+                        message: "El número de celular no es válido"
+                      }
+                    })}
+                  />
+
+                  <span className="input-label">
+                    Telefono
+                  </span>
+                </label>
+              </div>
+
+              <div className="home__contend-politicy">
+                <p><FaCheckSquare /> Acepto la política de privacidad</p>
+                <p><FaCheckSquare /> Acepto la Política Comunicaciones Comerciales</p>
+              </div>
 
               <a href="#" className="home__contend-link">
                 Aplican Términos y Condiciones.

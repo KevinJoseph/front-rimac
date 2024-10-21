@@ -20,7 +20,7 @@ export const Inputform = React.forwardRef<HTMLInputElement, Props>(
         };
 
         return (
-            <div className={`input__form-container ${containerClassName}`}>
+            <div className={`input__form-container2 ${containerClassName}`}>
                 <label htmlFor={id}>
                     <p className="input__form-title">{title}</p>
                     {children ? children : (
