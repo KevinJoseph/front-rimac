@@ -11,9 +11,9 @@ export const useSubmitForm = (url: string) => {
 
     try {
       const response = await axios.post(url, formData);
-
-      if (response.status === 200) {
-        setApiResponse("Cotización enviada con éxito");
+      console.log(response)
+      if (response.status === 201) {
+        setApiResponse("Procesado con éxito");
         return true;
       } else {
         setApiResponse(`Error: ${response.data.message || "Hubo un problema"}`);
