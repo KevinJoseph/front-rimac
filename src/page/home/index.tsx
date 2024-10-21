@@ -55,30 +55,38 @@ export const Home = () => {
                 </div>
                 <div className="input-div">
                   <label
-                    htmlFor="UserEmail"
+                    htmlFor="document"
                     className="input-container"
                   >
                     <input
-                      type="email"
-                      id="UserEmail"
+                      id="document"
                       placeholder=""
                       className="input-field"
+                      {...register("document", {       
+                        required: "El número de celular es obligatorio",
+                        pattern: {
+                          value: /^[0-9]{8}$/,
+                          message: "El número de celular no es válido"
+                        }
+                      })}
                     />
-
+        
                     <span className="input-label">
-                      Email
+                      Nro. de documento
                     </span>
                   </label>
                 </div>
+                
               </div>
+              {errors.document && <span className="error-message">{errors.document.message}</span>}
               <div>
                 <label
-                  htmlFor="userPhone"
+                  htmlFor="phone"
                   className="input-container2"
                 >
                   <input
                     type="number"
-                    id="userPhone"
+                    id="phone"
                     placeholder=""
                     className="input-field"
                     {...register("phone", {       
@@ -95,7 +103,7 @@ export const Home = () => {
                   </span>
                 </label>
               </div>
-
+              {errors.phone && <span className="error-message">{errors.phone.message}</span>}
               <div className="home__contend-politicy">
                 <p><FaCheckSquare /> Acepto la política de privacidad</p>
                 <p><FaCheckSquare /> Acepto la Política Comunicaciones Comerciales</p>
