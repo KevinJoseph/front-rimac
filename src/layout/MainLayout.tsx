@@ -1,11 +1,12 @@
 import { Navbar } from "./navbar"
 import { Footer } from "./footer"
+import { Home } from "../page/home"
 
 export const MainLayout = ({ children } : { children : React.ReactNode}) => {
     return (
         <>
             <Navbar />
-            <p>Home</p>
+            <Home/> 
             <Footer/>
         </>
     )

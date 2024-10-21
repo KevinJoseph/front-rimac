@@ -1,0 +1,17 @@
+.input__form-container {
+    border: var(--color-primary) 1px solid;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.input__form-title {
+    color: #5E6488;
+}
+
+.input-form-error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
