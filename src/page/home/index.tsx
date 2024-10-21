@@ -5,13 +5,15 @@ import { Button } from "../../components/ui/button";
 import { Inputform } from "../../components/custom/inputForm";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useSubmitForm } from "../../hooks/useSubmit"; 
+import { SelectForm } from "../../components/custom/selectForm";
 
 type FormData = {
-  celular: string;
-  dni: string;
+  phone: string;       // Cambia de celular a phone
+  document: string;    // Cambia de dni a document
 };
 
 export const Home = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const {
     register,
     handleSubmit,
@@ -19,10 +21,10 @@ export const Home = () => {
     reset
   } = useForm<FormData>();
 
-  const { isSubmitting, apiResponse, submitForm } = useSubmitForm("https://localhost");
+  const { isSubmitting, apiResponse, submitForm } = useSubmitForm(apiUrl);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log("data: ", data)
+    console.log("data: ", data);
     const success = await submitForm(data); 
     if (success) {
       reset();
@@ -45,8 +47,8 @@ export const Home = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <Inputform
                 title="Celular"
-                error={errors.celular?.message}
-                {...register("celular", {
+                error={errors.phone?.message}  // Cambia celular a phone
+                {...register("phone", {        // Cambia celular a phone
                   required: "El número de celular es obligatorio",
                   pattern: {
                     value: /^[0-9]{9}$/, 
@@ -55,10 +57,10 @@ export const Home = () => {
                 })}
               />
 
-              <Inputform
-                title="DNI"
-                error={errors.dni?.message}
-                {...register("dni", {
+              <SelectForm
+                title="Nro. de Documento"
+                error={errors.document?.message} // Cambia dni a document
+                {...register("document", {          // Cambia dni a document
                   required: "El DNI es obligatorio",
                   pattern: {
                     value: /^[0-9]{8}$/, 

@@ -5,7 +5,7 @@ export const useSubmitForm = (url: string) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [apiResponse, setApiResponse] = useState<string | null>(null);
 
-  const submitForm = async (formData: { celular: string; dni: string }) => {
+  const submitForm = async (formData: { phone: string; document: string }) => {
     setIsSubmitting(true);
     setApiResponse(null);
 
