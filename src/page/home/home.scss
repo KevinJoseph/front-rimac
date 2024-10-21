@@ -162,4 +162,11 @@ select {
     color: red;
     font-size: 0.8rem;
     margin-top: 5px;
-  }
+}
+
+@media only screen and (max-width: 900px) {
+    .container_home {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
