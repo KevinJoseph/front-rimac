@@ -1,0 +1,38 @@
+
+.footer__container {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.footer__container-contend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+}
+
+.footer__contend-image2 {
+    display: none;
+}
+
+
+@media only screen and (max-width: 650px) {
+    .footer__container-contend {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer__contend-line {
+        width: 100%;
+        background-color: #2B304E;
+        height: 1px;
+    }
+
+    .footer__contend-image1 {
+        display: none;
+    }
+
+    .footer__contend-image2 {
+        display: block;
+    }
+}
